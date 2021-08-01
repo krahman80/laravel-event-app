@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Event;
 
 class WelcomeController extends Controller
 {
-    function index(){
-        return view('welcome.index');
+    public function index()
+    {
+        // $datas = Event::all();
+        $datas = Event::paginate(20);
+        // $datas = DB::table('event')->get();
+        return view('welcome.index', ['datas' => $datas]);
     }
 }
