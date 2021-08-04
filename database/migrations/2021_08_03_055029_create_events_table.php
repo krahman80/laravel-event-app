@@ -15,10 +15,12 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('venue');
-            $table->string('city');
+            $table->string('name', '155');
+            $table->string('venue', '200');
+            $table->string('city', '255');
             $table->text('description')->nullable();
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

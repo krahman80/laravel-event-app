@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class EventsController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -11,15 +11,15 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $articleName = 'apa aja dah';
-        dd($articleName);
+        // $articleName = 'apa aja dah';
+        // dd($articleName);
         // $events = Event::all();
-        // $datas = ['Article 1', 'Article 2', 'Article 3'];
+        $datas = ['Article 1', 'Article 2', 'Article 3'];
         // $events = Event::paginate(20);
         // return view('events.index')->with('articleName', $articleName);
         // return view('events.index', ['article' => 'Passing Data to View']);
         // return view('events.index', compact('data'));
-        // return view('events.index', ['datas' => $datas]);
+        return view('events.index', ['datas' => $datas]);
     }
 
 }
