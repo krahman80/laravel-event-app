@@ -11,16 +11,17 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('categories')->truncate();
-
-        // $faker = \Faker\Factory::create();
-        // $now = Carbon::now()->format('Y-m-d H:i:s');
 
         factory(App\Category::class, 10)->create()->each(function ($category) {
             $event = factory(App\Event::class, 5)->make();
             $category->events()->saveMany($event);
         });
 
+        // Unused, used factory.
+
+        // DB::table('categories')->truncate();
+        // $faker = \Faker\Factory::create();
+        // $now = Carbon::now()->format('Y-m-d H:i:s');
         // DB::table('categories')->insert([
         //     [
         //         'name' => 'Workshop',

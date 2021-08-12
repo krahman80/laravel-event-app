@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Category::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => 'event category ' . $faker->word(),
         'description' => $faker->text($maxNbChars = 100),
         'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -17,8 +17,8 @@ $factory->define(App\Category::class, function (Faker $faker) {
 
 $factory->define(App\Event::class, function (Faker $faker) {
     return [
-        'name' => $faker->name . 'event',
-        'venue' => $faker->lexify('venue ????'),
+        'name' => 'event no #' . $faker->randomNumber(5, false),
+        'venue' => $faker->lexify('venue ??????'),
         'start_time' => Carbon::now()->format('Y-m-d H:i:s'),
         'end_time' => Carbon::now()->addHours(3)->format('Y-m-d H:i:s'),
         'city' => $faker->city,

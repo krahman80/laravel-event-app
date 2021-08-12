@@ -1,5 +1,5 @@
 <?php
-use App\Event;
+// use App\Event;
 use Illuminate\Database\Seeder;
 
 class EventTableSeeder extends Seeder
@@ -11,17 +11,18 @@ class EventTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        DB::table('events')->truncate();
-        $faker = \Faker\Factory::create();
+        // Unused, event seeding execute from category seed.
 
-        foreach (range(1, 75) as $index) {
-            Event::create([
-                'name' => $faker->sentence(2),
-                'city' => $faker->city,
-                'venue' => $faker->company,
-                'description' => $faker->paragraphs(1, true),
-            ]);
-        }
+        // DB::table('events')->truncate();
+        // $faker = \Faker\Factory::create();
+
+        // foreach (range(1, 75) as $index) {
+        //     Event::create([
+        //         'name' => $faker->sentence(2),
+        //         'city' => $faker->city,
+        //         'venue' => $faker->company,
+        //         'description' => $faker->paragraphs(1, true),
+        //     ]);
+        // }
     }
 }

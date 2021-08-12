@@ -1,4 +1,4 @@
-@extends('layouts.appads')
+@extends('layouts.ads')
 
 @section('content')
 
