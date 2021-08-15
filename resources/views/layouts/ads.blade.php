@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {!! Html::style('css/app.css') !!}
-    <title>Horokanai Community Center</title>
+    <title>Event Pool Apps</title>
 </head>
 <body>
     @include('partials._navigation')
@@ -16,14 +16,11 @@
     </section>
     
     <section>  
-    <div>
         @yield('content')
-    </div>
-    <div>
+    
         @section('ads')
             <p>visit our Horokanai Soba store!</p>
         @show
-    </div>
     </section>
     </div>
 

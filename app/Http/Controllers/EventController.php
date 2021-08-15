@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Event;
 
 class EventController extends Controller
 {
@@ -11,14 +12,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        // $articleName = 'apa aja dah';
-        // dd($articleName);
-        // $events = Event::all();
-        $datas = ['Article 1', 'Article 2', 'Article 3'];
-        // $events = Event::paginate(20);
-        // return view('events.index')->with('articleName', $articleName);
-        // return view('events.index', ['article' => 'Passing Data to View']);
-        // return view('events.index', compact('data'));
+        $datas = Event::paginate(8);
         return view('events.index', ['datas' => $datas]);
     }
 
