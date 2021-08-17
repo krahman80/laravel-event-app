@@ -18,7 +18,7 @@
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
 Route::get('event', 'EventController@index')->name('events.index');
-// Route::get('events/{id}', 'EventsController@show')->name('events.show');
+Route::get('event/{id}', 'EventController@show')->name('events.show');
 // Route::get('events/category/{category}/{subcategory?}','EventsController@category');
 // Route::resource('events', 'EventsController');
 

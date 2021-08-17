@@ -1,11 +1,11 @@
 @extends('layouts.default')
 
 @section('content')
-<h1>{{ $event->name }}</h1>
+<h1>{{ $datas->name }}</h1>
 <p>
-    We're looking at event ID #{{ $event->id }} <br/>
-    city : {{ $event->city }} <br/>
-    venue : {{ $event->venue }}
+    We're looking at event ID #{{ $datas->id }} <br/>
+    city : {{ $datas->city }} <br/>
+    venue : {{ $datas->venue }}
 </p>
 
 @endsection
