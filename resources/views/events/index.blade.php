@@ -1,36 +1,44 @@
-@extends('layouts.default')
+@extends('layouts.app')
 
 @section('content')
 
-<h2>Event Index</h2>
-{{-- <p>{{ $article }}</p> --}}
 <div class="row">
-    <div class="col-8">
+    <div class="col-md-8">
+        <div class="py-3">
+        {!! Form::open(['url' => 'search']) !!}
+         <div class="input-group">
+           {!! Form::text('keyword', null, ['class'=>'form-control mr-2' , 'placeholder'=>'Search Event']); !!} 
+                  <button type="submit" class="btn btn-primary">
+                      Search
+                  </button>
+              </span>
+          </div>
+          {!! Form::close() !!}
+        </div>
         <div class="card-columns">
             @forelse ($datas as $key => $data)
-                {{-- <li>{{ $data->name }}</li>    --}}
-                <div class="card" style="width: 18rem;">
-          
-          <div class="card-body">
-            <h5 class="card-title">{{ $data->name }}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+            <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{ $data->name }}</h5>
+              <p class="card-text" style="min-height: 90px;">
+                Event date : <span class="text-primary">{{ $data->start_time->format('M d, Y') }} </span><br/>
+                Event Description : {{ $data->short_desc }}
+                </p>
+                {!! link_to_route('events.show', 'See Detail >>', ['data' => $data->id], array('class' => 'card-link')) !!}
+            </div>
         </div>
             @empty
-                {{-- <li>No events found!</li> --}}
-                <div class="card" style="width: 18rem;">
-                    
-                    <div class="card-body">
-                      <h5 class="card-title">No events found!</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-            @endforelse
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">No events found!</h5>
+                    <p class="card-text"></p>
+                    <a href="#" class="card-link">Go somewhere</a>
                 </div>
+                </div>
+            @endforelse
+          </div>
     </div>
-    <div class="col-4">
+    <div class="col-md-4">
       2 of 2
     </div>
 </div>

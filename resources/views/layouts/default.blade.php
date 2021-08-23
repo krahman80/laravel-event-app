@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {!! Html::style('css/app.css') !!}
+    {!! Html::script('js/app.js') !!}
     <title>{{ config('app.name', 'Event Pool') }}</title>
 </head>
 <body>

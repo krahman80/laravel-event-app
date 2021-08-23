@@ -8,7 +8,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $datas = Event::latest()->take(7)->get();
+        $datas = Event::latest()->take(9)->get();
         return view('welcome.index', ['datas' => $datas]);
     }
 }

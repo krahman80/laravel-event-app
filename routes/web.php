@@ -15,10 +15,18 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'WelcomeController@index')->name('welcome');
+// Route::get('/', 'WelcomeController@index')->name('welcome');
 
-Route::get('event', 'EventController@index')->name('events.index');
+Route::get('/', 'EventController@index')->name('events.index');
 Route::get('event/{id}', 'EventController@show')->name('events.show');
+Route::post('search','EventController@search')->name('events.search');
+// Route::post('search',
+// function(\Illuminate\Http\Request $request)
+// {
+//     // var_dump($request->all());
+//     dd($request->all());
+// }
+// );
 // Route::get('events/category/{category}/{subcategory?}','EventsController@category');
 // Route::resource('events', 'EventsController');
 
