@@ -15,7 +15,7 @@ class EventController extends Controller
     public function index()
     {
         // $users = User::select([‘id’, ‘first_name’, ‘last_name’])->get();
-        $datas = Event::paginate(8);
+        $datas = Event::paginate(5);
         return view('events.index', ['datas' => $datas]);
     }
 
@@ -26,7 +26,17 @@ class EventController extends Controller
     }
 
     public function search(Request $request){
-        dd($request->all());
+        // dd($request->all());
+        $validatedData = $request->validate([
+            'keyword' => 'required|max:255' 
+        ]);
+        
+        $searchTerm = $request->input('keyword');
+        
+        $datas = Event::where ( 'name', 'LIKE', '%' . $searchTerm . '%' )->paginate(5);
+        $datas->appends(['keyword' => $searchTerm]);
+        
+        return view('events.index', ['datas' => $datas]);
     }
 
 }

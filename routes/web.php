@@ -19,7 +19,7 @@
 
 Route::get('/', 'EventController@index')->name('events.index');
 Route::get('event/{id}', 'EventController@show')->name('events.show');
-Route::post('search','EventController@search')->name('events.search');
+Route::any('search','EventController@search')->name('events.search');
 // Route::post('search',
 // function(\Illuminate\Http\Request $request)
 // {

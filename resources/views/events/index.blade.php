@@ -4,6 +4,16 @@
 
 <div class="row">
     <div class="col-md-8">
+      <h2>Find events and partisipate.</h2>
+        @if ($errors->any())
+        <div class="alert alert-danger py-3">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="py-3">
         {!! Form::open(['url' => 'search']) !!}
          <div class="input-group">
@@ -15,33 +25,49 @@
           </div>
           {!! Form::close() !!}
         </div>
-        <div class="card-columns">
+        
             @forelse ($datas as $key => $data)
-            <div class="card h-100">
-            <div class="card-body">
+            <div class="card my-2">
+              <div class="card-body">
               <h5 class="card-title">{{ $data->name }}</h5>
-              <p class="card-text" style="min-height: 90px;">
+              <p class="card-text">
                 Event date : <span class="text-primary">{{ $data->start_time->format('M d, Y') }} </span><br/>
                 Event Description : {{ $data->short_desc }}
                 </p>
                 {!! link_to_route('events.show', 'See Detail >>', ['data' => $data->id], array('class' => 'card-link')) !!}
             </div>
-        </div>
+          </div>
             @empty
-              <div class="card" style="width: 18rem;">
+              <div class="card border-dark" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">No events found!</h5>
                     <p class="card-text"></p>
-                    <a href="#" class="card-link">Go somewhere</a>
                 </div>
                 </div>
             @endforelse
-          </div>
+          
     </div>
     <div class="col-md-4">
-      2 of 2
+      <div class="card mb-3">
+        <div class="card-header">Ads</div>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Ads 2</div>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
     </div>
 </div>
+<div>
 {!! $datas->links() !!}
+</div>
 {{-- {!! $events->links('vendor.pagination.simple-bootstrap-4') !!} --}}
 @endsection
