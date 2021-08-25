@@ -17,6 +17,10 @@ class Event extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function users(){
+        return $this->belongsToMany('app\User')->withTimeStamps();
+    }
+
     public function getShortDescAttribute(){
         $length = 50;
         $append = "...";

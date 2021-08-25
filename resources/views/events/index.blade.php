@@ -29,12 +29,20 @@
             @forelse ($datas as $key => $data)
             <div class="card my-2">
               <div class="card-body">
-              <h5 class="card-title">{{ $data->name }}</h5>
+                <div class="row">
+                <div class="col-8">
+                  <h5 class="card-title">{{ $data->name }}</h5>
               <p class="card-text">
                 Event date : <span class="text-primary">{{ $data->start_time->format('M d, Y') }} </span><br/>
+                Event time : <span class="text-primary">{{ $data->start_time->format('H:m') }} </span><br/>
                 Event Description : {{ $data->short_desc }}
                 </p>
-                {!! link_to_route('events.show', 'See Detail >>', ['data' => $data->id], array('class' => 'card-link')) !!}
+                {!! link_to_route('events.show', 'See more >>', ['data' => $data->id], array('class' => 'card-link')) !!}
+                </div>
+                <div class="col">
+                  One of three columns
+                </div>
+              </div>
             </div>
           </div>
             @empty
