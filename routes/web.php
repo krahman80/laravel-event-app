@@ -33,3 +33,7 @@ Route::any('search','EventController@search')->name('events.search');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/partisipate/{id}', 'HomeController@partisipate')->name('home.partisipate');
+
+// Route::get('partisipate/{id}', 'HomeController@partisipate')->middleware(['partisipate'])->name('home.partisipate');
+// Route::get('partisipate/{id}', function () {})->middleware('partisipate')->name('home.partisipate');

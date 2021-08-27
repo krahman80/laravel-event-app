@@ -30,7 +30,7 @@
             <div class="card my-2">
               <div class="card-body">
                 <div class="row">
-                <div class="col-8">
+                <div class="col-9">
                   <h5 class="card-title">{{ $data->name }}</h5>
               <p class="card-text">
                 Event date : <span class="text-primary">{{ $data->start_time->format('M d, Y') }} </span><br/>
@@ -40,7 +40,7 @@
                 {!! link_to_route('events.show', 'See more >>', ['data' => $data->id], array('class' => 'card-link')) !!}
                 </div>
                 <div class="col">
-                  One of three columns
+                {!! link_to_route('home.partisipate','[ partisipate ]',array('data' => $data->id), array('class' => 'card-link')) !!}
                 </div>
               </div>
             </div>
