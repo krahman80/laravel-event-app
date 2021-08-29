@@ -14,3 +14,7 @@ yarn-error.log
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
+app.dockerfile
+docker-compose.yml
+vhost.conf
+web.dockerfile
