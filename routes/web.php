@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('partisipate/{id}','HomeController@partisipate')->name('partisipate')->middleware('auth');
+Route::get('partisipate/{id}', function ($id) {
+})->name('home.partisipate')->middleware('partisipate');;
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
