@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('public.welcome');
+// });
 
 // Route::get('partisipate/{id}','HomeController@partisipate')->name('partisipate')->middleware('auth');
-Route::get('partisipate/{id}', function ($id) {
-})->name('home.partisipate')->middleware('partisipate');;
-
+Route::get('partisipate/{id}', function ($id) { })->name('event.partisipate')->middleware('partisipate');;
+Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('event', 'Member\EventController');
+Route::get('/dashboard/index', 'Member\DashboardController@index')->name('dashboard.index');
