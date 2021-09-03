@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Event;
 
 class EventController extends Controller
 {
@@ -20,7 +21,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $event = Event::get();
+        return view('events.index', compact('events'));
     }
 
     /**
@@ -52,7 +54,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Task::findOrFail($id);        
+        return view('events.show', compact('events'));
     }
 
     /**
