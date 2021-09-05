@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Event;
+use App\Event;
 
 class EventController extends Controller
 {
@@ -22,7 +22,7 @@ class EventController extends Controller
     public function index()
     {
         $event = Event::get();
-        return view('events.index', compact('events'));
+        return view('events.index', ['events' => $event]);
     }
 
     /**
@@ -54,8 +54,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Task::findOrFail($id);        
-        return view('events.show', compact('events'));
+        $event = Event::findOrFail($id);        
+        return view('events.show', ['events' => $event]);
     }
 
     /**

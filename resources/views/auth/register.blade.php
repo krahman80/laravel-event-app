@@ -69,7 +69,7 @@
                             </button></div>
                             <div>&nbsp;</div>
                             <div>{{
-                                link_to_route('home', '{ back home }', [], ['class'=>'btnbtn-link'])
+                                link_to_route('home', '[ back home ]', [], ['class'=>'btnbtn-link'])
                             }}</div>
                           </div>
                     </form>

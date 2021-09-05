@@ -3,7 +3,7 @@
 @section('content')
 <div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="flash-message">
                 @if(!empty($successMsg))
                     <div class="alert alert-warning"> {{ $successMsg }}</div>
@@ -47,16 +47,15 @@
                                     {{ __('Remember Me') }}
                                 </label>
                         </div>
+                        <div class="form-group d-flex justify-content-between"><button type="submit" class="btn btn-sm btn-primary">
+                            {{ __('Login') }}
+                        </button>
+                        </div>
                         <div class="form-group d-flex justify-content-between">
-                            <div><button type="submit" class="btn btn-sm btn-primary w-200">
-                                {{ __('Login') }}
-                            </button></div>
-                            <div><a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a></div>
-                            <div>{{
-                                link_to_route('home', '{ back home }', [], ['class'=>'btn btn-link'])
-                            }}</div>
+                            <div>{{ link_to_route('password.request', '[ Forgot Password? ]', [], ['class'=>'btn btn-link'])}}
+                                |{{ link_to_route('register', '[ register ]', [], ['class'=>'btn btn-link']) }}
+                                |{{ link_to_route('home', '[ back home ]', [], ['class'=>'btn btn-link']) }}
+                            </div>
                         </div>               
                     </form>
                 </div>

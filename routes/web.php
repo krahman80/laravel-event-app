@@ -19,5 +19,9 @@
 Route::get('partisipate/{id}', function ($id) { })->name('event.partisipate')->middleware('partisipate');;
 Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
-Route::resource('event', 'Member\EventController');
-Route::get('/dashboard/index', 'Member\DashboardController@index')->name('dashboard.index');
+// Route::resource('event', 'Admin\EventController');
+Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>'admin'], function(){
+    Route::resource('event', 'EventController');
+});
+
+Route::get('/dashboard/index', 'DashboardController@index')->name('dashboard.index');

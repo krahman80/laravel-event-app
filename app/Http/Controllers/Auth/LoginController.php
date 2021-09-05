@@ -42,7 +42,7 @@ class LoginController extends Controller
         // $log = 'in login controller';
         // dd($request->id);
         if($request->id != ""){
-            return view('auth.login')->with('successMsg','Please login to partisipate in an event. If you are not a member yet, please register.');
+            return view('auth.login')->with('successMsg','Login to partisipate events. Not a member? please register.');
         }
         return view('auth.login');
     }

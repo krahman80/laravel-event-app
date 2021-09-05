@@ -5,7 +5,7 @@
     
     <div class="row">
         <div class="col-md-12 blog-main col-lg-12 blog-main col-sm-12 blogmain">
-            dashboard
+            Admin
         </div>
     </div>    
 </div>
