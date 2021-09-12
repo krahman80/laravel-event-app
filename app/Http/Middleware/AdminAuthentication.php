@@ -22,6 +22,6 @@ class AdminAuthentication
             }
         }
 
-        return new RedirectResponse(url('/'));
+        return new RedirectResponse(url('/dashboard/index'));
     }
 }

@@ -21,8 +21,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event = Event::get();
-        return view('events.index', ['events' => $event]);
+        $events = Event::paginate(5);
+        return view('events.index', ['events' => $events]);
     }
 
     /**
@@ -33,6 +33,7 @@ class EventController extends Controller
     public function create()
     {
         //
+        return view('events.create');
     }
 
     /**
@@ -44,6 +45,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request);
     }
 
     /**
