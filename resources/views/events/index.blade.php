@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col col-md-12">
+            <h4 class="my-3">Manage Event</h4>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-9 blog-main col-lg-9 blog-main col-sm-9 blogmain">
                 @forelse ($events as $event)
                     <div class="card mb-2">
@@ -16,6 +21,9 @@
                         {!! link_to_route('event.show', '[See more]', ['data' => $event->id], array('class' => 'card-link')) !!}
                         </div>
                         <div class="col">
+                            {!! link_to_route('event.edit', '[edit event]', ['data' => $event->id], array('class' => 'card-link')) !!} <br/>
+                            {!! link_to_route('event.destroy', '[delete event]', ['data' => $event->id], array('class' => 'card-link')) !!}
+                        
                         {{-- {!! link_to_route('home.partisipate','[ partisipate ]',array('data' => $data->id), array('class' => 'card-link')) !!} --}}
                         </div>
                     </div>
@@ -31,14 +39,15 @@
                         @endforelse                   
             
             </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header">Welcome, {{ Auth::user()->name }}</div>
-                    @include('partials._admin')
-                    
-                </div>
+            <div class="col">
+                @include('partials._admin')
             </div>
-            {!! $events->links() !!}
+           
+        </div>
+        <div class="row">
+            <div class="col col-md-12">
+                {!! $events->links() !!}
+            </div>
         </div>
     </div>
 </div>

@@ -24,4 +24,4 @@ Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>'admin'], 
     Route::resource('event', 'EventController');
 });
 
-Route::get('/dashboard/index', 'DashboardController@index')->name('dashboard.index');
+// Route::get('/dashboard/index', 'DashboardController@index')->name('dashboard.index');

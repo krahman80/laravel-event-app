@@ -1,14 +1,21 @@
-<div class="card-body">
+
     @if (Auth::check())
         @if (Auth::user()->is_admin == true)
-            <ul class="nav flex-column">
-             <li class="nav-item">{!! link_to_route('event.index', 'event list', [], ['class'=>'nav-link']) !!}</li>
-             <li class="nav-item">{!! link_to_route('event.create', 'add event', [], ['class'=>'nav-link']) !!}</li>
-            </ul>
+        <div class="card">
+            <div class="card-body">
+            <h5 class="card-title">Manage Event</h5>
+                <ul class="nav flex-column">
+                <li class="nav-item">{!! link_to_route('event.index', 'event list', [], []) !!}</li>
+                <li class="nav-item">{!! link_to_route('event.create', 'add event', [], []) !!}</li>
+                </ul>
+            </div>
+        </div>
         @else
-            is member
+        <div class="card">
+            <div class="card-body">
+            hello member!
+            </div>
+        </div>
         @endif
-    @endif
-
-     
- </div>
+        <br/>
+    @endif    

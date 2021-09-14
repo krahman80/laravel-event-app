@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col col-md-12">
+            <h4 class="my-3">Manage Event</h4>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-9 blog-main col-lg-9 blog-main col-sm-9 blogmain">
             <div class="card p-4">
                 <h5 class="card-title">Add Event</h5>
@@ -29,12 +34,8 @@
                 {!! Form::close() !!}
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">Welcome, {{ Auth::user()->name }}</div>
-                @include('partials._admin')
-                
-            </div>
+        <div class="col">
+            @include('partials._admin')
         </div>
     </div>
 </div>

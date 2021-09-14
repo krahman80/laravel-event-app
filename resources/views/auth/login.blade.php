@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="flash-message">
-                @if(!empty($successMsg))
-                    <div class="alert alert-warning"> {{ $successMsg }}</div>
+                @if(!empty($userMsg))
+                    <div class="alert alert-warning"> {{ $userMsg }}</div>
                 @endif
               </div>
         </div>
