@@ -57,20 +57,17 @@
                             <label for="password-confirm">{{ __('Confirm Password') }}</label>
                                 <input id="password-confirm" type="password" class="form-control form-control-sm" name="password_confirmation" required>
                         </div>
-
-                        <div class="form-group">
-                            
-                                
-                            
-                        </div>
-                        <div class="form-group d-flex justify-content-between">
-                            <div><button type="submit" class="btn btn-sm btn-primary">
+                        
+                        <div class="form-group py-2">
+                            <button type="submit" class="btn btn-primary w-100">
                                 {{ __('Register') }}
-                            </button></div>
-                            <div>&nbsp;</div>
+                            </button>
+                        </div>    
+                        <div class="form-group d-flex justify-content-center">
                             <div>{{
                                 link_to_route('home', '[ back home ]', [], ['class'=>'btnbtn-link'])
-                            }}</div>
+                            }}
+                            </div>
                           </div>
                     </form>
                 </div>

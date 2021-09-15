@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Event;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\EventStoreRequest;
+use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
@@ -13,7 +14,7 @@ class EventController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -42,10 +43,16 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventStoreRequest $request)
     {
         //
-        dd($request);
+        // dd($request->input());
+        $event = Event::create($request->input());
+        $errors = $validator->errors();
+
+        dd($errors);
+
+        return redirect()->route('event.show', ['event' => $event]);
     }
 
     /**
@@ -56,7 +63,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event::findOrFail($id);        
+        $event = Event::findOrFail($id);
         return view('events.show', ['events' => $event]);
     }
 

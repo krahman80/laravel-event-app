@@ -47,7 +47,7 @@
                                     {{ __('Remember Me') }}
                                 </label>
                         </div>
-                        <div class="form-group d-flex justify-content-between"><button type="submit" class="btn btn-sm btn-primary">
+                        <div class="form-group d-flex justify-content-between"><button type="submit" class="btn btn-sm btn-primary w-100">
                             {{ __('Login') }}
                         </button>
                         </div>

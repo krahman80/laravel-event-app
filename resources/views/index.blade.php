@@ -18,6 +18,7 @@
     <div class="row">
         <div class="col col-md-12">
             <h4 class="my-3">Event list</h4>
+            <p>Find an event that interests you.</p>
         </div>
     </div>
     <div class="row">
