@@ -50,7 +50,7 @@ class EventController extends Controller
         $event = Event::create($request->input());
         $errors = $validator->errors();
 
-        dd($errors);
+        // dd($errors);
 
         return redirect()->route('event.show', ['event' => $event]);
     }
@@ -76,6 +76,8 @@ class EventController extends Controller
     public function edit($id)
     {
         //
+        $event = Event::findOrFail($id);
+        return view('events.edit',['event' => $event]);
     }
 
     /**
@@ -85,9 +87,16 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EventStoreRequest $request, Event $event)
     {
+        // $var = $request->input('name') . "/" .$event->id;
+        // dd($var);
         //
+        $event->update($request->input());
+        return redirect()
+         ->route('event.edit', $event)
+         ->with('message', 'Event updated!');
+        // return redirect()->route('event.show', ['event' => $event]);
     }
 
     /**

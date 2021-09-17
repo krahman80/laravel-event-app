@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminAuthentication
 {
@@ -22,6 +23,6 @@ class AdminAuthentication
             }
         }
 
-        return new RedirectResponse(url('/dashboard/index'));
+        return redirect('/');
     }
 }

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     {{-- <div class="row justify-content-center">
         <div class="col-md-8">
@@ -17,7 +18,7 @@
     </div> --}}
     <div class="row">
         <div class="col col-md-12">
-            <h4 class="my-3">Event list</h4>
+            <h1 class="h3 my-3">Event list</h1>
             <p>Find an event that interests you.</p>
         </div>
     </div>
@@ -32,7 +33,7 @@
                    <div class='card-body'>
                     <div class='row'>
                         <div class='col-9'>
-                            <h5 class='card-title'>{{ $event->name }}</h5>
+                            <h2 class='h5 card-title'>{{ $event->name }}</h2>
                             <p class='card-text'>Description : <br/>{{ $event->description }}</p>
                             
                         </div>
@@ -47,7 +48,7 @@
                 <div class='card-body'>
                  <div class='row'>
                      <div class='col-9'>
-                         <h5 class='card-title'>No event found</h5>
+                         <h2 class=' h5 card-title'>No event found</h2>
                          <p class='card-text'></p>
                      </div>
                      <div class='col'>
@@ -59,17 +60,14 @@
             @endforelse
         </div>
         <div class="col">
-                @include('partials._admin')
-                @guest
                 <div class='card mb-2'>
                     <div class="card-body">
-                        <h5 class='card-title'>Ads</h5>
+                        <h2 class='h5 card-title'>Ads</h2>
                         <p class='card-text'>
                             Nam corporis eligendi animi corrupti consectetur. Possimus autem autem occaecati quia est. Omnis ut eum dolores officiis ut eligendi. Accusamus velit molestiae debitis quis. Sed distinctio quae quia
                         </p>
                     </div>
                 </div> 
-                @endguest                
                 {{-- 
                 <h5 class='card-title'>Ads</h5>
                     <ul class="nav">
@@ -88,4 +86,5 @@
         </div>
     </div>    
 </div>
+
 @endsection

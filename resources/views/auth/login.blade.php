@@ -51,11 +51,15 @@
                             {{ __('Login') }}
                         </button>
                         </div>
-                        <div class="form-group d-flex justify-content-between">
-                            <div>{{ link_to_route('password.request', '[ Forgot Password? ]', [], ['class'=>'btn btn-link'])}}
-                                |{{ link_to_route('register', '[ register ]', [], ['class'=>'btn btn-link']) }}
-                                |{{ link_to_route('home', '[ back home ]', [], ['class'=>'btn btn-link']) }}
-                            </div>
+                        <div class="form-group">
+                            <ul class="list-inline text-center">
+                                <li class="list-inline-item">{{ link_to_route('password.request', '[ Forgot Password? ]', [], ['class'=>'btn btn-link'])}}
+                                </li>
+                                <li class="list-inline-item">{{ link_to_route('register', '[ register ]', [], ['class'=>'btn btn-link']) }}
+                                </li>
+                                <li class="list-inline-item">{{ link_to_route('home', '[ back home ]', [], ['class'=>'btn btn-link']) }}
+                                </li>
+                            </ul>
                         </div>               
                     </form>
                 </div>
