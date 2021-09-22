@@ -18,3 +18,4 @@ app.dockerfile
 docker-compose.yml
 vhost.conf
 web.dockerfile
+*.zip

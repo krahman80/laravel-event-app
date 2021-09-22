@@ -60,8 +60,19 @@
             @endforelse
         </div>
         <div class="col">
+                
                 <div class='card mb-2'>
                     <div class="card-body">
+                        @if (Auth::check())
+                        @if (Auth::user()->is_admin == false)
+                        <h2 class="h5 card-title">Member Menu</h2>
+                        <ul class="nav flex-column">
+                            <li class="nav-item"><a href="#">joined event</a></li>
+                        </ul>
+                        
+                        <hr/>
+                        @endif
+                        @endif    
                         <h2 class='h5 card-title'>Ads</h2>
                         <p class='card-text'>
                             Nam corporis eligendi animi corrupti consectetur. Possimus autem autem occaecati quia est. Omnis ut eum dolores officiis ut eligendi. Accusamus velit molestiae debitis quis. Sed distinctio quae quia
@@ -81,8 +92,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col col-md-12">
+        <div class="col col-md-9">
+            <div class="d-flex justify-content-center">
             {!! $events->links() !!}
+            </div>
         </div>
     </div>    
 </div>
