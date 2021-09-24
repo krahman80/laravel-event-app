@@ -1,4 +1,4 @@
-@extends('layouts.nonav')
+@extends('layouts.auth')
 
 @section('content')
 <div class="container my-5">
