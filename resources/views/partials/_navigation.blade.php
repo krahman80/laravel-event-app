@@ -8,11 +8,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
-
+            
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
@@ -25,7 +21,13 @@
                     </li>
                 @else
                     <li class="nav-item ">
-                        <span class="nav-link">Hello, {{ Auth::user()->name }}</span> 
+                        <span class="nav-link">Hello, {{ Auth::user()->name }}
+                        @if (Auth::user()->is_admin == true)
+                        [admin]
+                        @else
+                        [member]    
+                        @endif
+                        </span>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="{{ route('logout') }}"

@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="col">
-            @include('partials._admin')
+            @include('partials._member')
         </div>
     </div>
 </div>

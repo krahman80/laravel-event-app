@@ -64,14 +64,12 @@
                 <div class='card mb-2'>
                     <div class="card-body">
                         @if (Auth::check())
-                        @if (Auth::user()->is_admin == false)
                         <h2 class="h5 card-title">Member Menu</h2>
                         <ul class="nav flex-column">
                             <li class="nav-item"><a href="#">joined event</a></li>
                         </ul>
                         
                         <hr/>
-                        @endif
                         @endif    
                         <h2 class='h5 card-title'>Ads</h2>
                         <p class='card-text'>

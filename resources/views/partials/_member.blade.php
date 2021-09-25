@@ -1,6 +1,5 @@
 
     @if (Auth::check())
-        @if (Auth::user()->is_admin == true)
         <div class="card">
             <div class="card-body">
             <h2 class="h4 card-title">Manage Event</h2>
@@ -16,6 +15,5 @@
                 <h2 class="h4 card-title">Hello, Member</h2>
             </div>
         </div>
-        @endif
         <br/>
     @endif    

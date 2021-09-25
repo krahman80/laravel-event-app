@@ -20,7 +20,7 @@ Route::get('partisipate/{id}', function ($id) { })->name('event.partisipate')->m
 Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 // Route::resource('event', 'Admin\EventController');
-Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>'admin'], function(){
+Route::group(['prefix' => 'member', 'namespace'=>'Member','middleware'=>'auth'], function(){
     Route::resource('event', 'EventController');
 });
 
