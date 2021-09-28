@@ -11,8 +11,7 @@
               </div>
         </div>
     </div> --}}
-    @include('partials._messages')
-
+    
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="card login-form">
@@ -58,7 +57,7 @@
                                 </li>
                                 <li class="list-inline-item">{{ link_to_route('register', '[ register ]', [], ['class'=>'btn btn-link']) }}
                                 </li>
-                                <li class="list-inline-item">{{ link_to_route('home', '[ back home ]', [], ['class'=>'btn btn-link']) }}
+                                <li class="list-inline-item">{{ link_to_route('event.index', '[ home ]', [], ['class'=>'btn btn-link']) }}
                                 </li>
                             </ul>
                         </div>               

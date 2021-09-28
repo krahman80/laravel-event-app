@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers;
 
 use App\Event;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,7 @@ class EventController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth',['except' => ['index','show']]);
     }
 
     /**

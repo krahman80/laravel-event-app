@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container my-5">
-    @include('partials._messages')
     <div class="row justify-content-center">
         {{-- <div class="col"></div> --}}
         <div class="col-md-6">
@@ -66,7 +65,7 @@
                         </div>    
                         <div class="form-group d-flex justify-content-center">
                             <div>{{
-                                link_to_route('home', '[ back home ]', [], ['class'=>'btnbtn-link'])
+                                link_to_route('event.index', '[ home ]', [], ['class'=>'btnbtn-link'])
                             }}
                             </div>
                           </div>
