@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/member/event';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -42,7 +42,7 @@ class LoginController extends Controller
         // $log = 'in login controller';
         // dd($request->id);
         if($request->id != ""){
-            return view('auth.login')->with('userMsg','Login to partisipate events. Not a member? please register.');
+            return view('auth.login')->with('error','Login to partisipate events. Not a member? please register.');
         }
         return view('auth.login');
     }

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container my-5">
-    <div class="row justify-content-center">
+    {{-- <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="flash-message">
                 @if(!empty($userMsg))
@@ -10,7 +10,8 @@
                 @endif
               </div>
         </div>
-    </div>
+    </div> --}}
+    @include('partials._messages')
 
     <div class="row justify-content-center">
         <div class="col-md-5">

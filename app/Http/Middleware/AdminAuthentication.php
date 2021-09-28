@@ -17,12 +17,12 @@ class AdminAuthentication
     public function handle($request, Closure $next)
     {
         // return $next($request);
-        if($request->user()){
-            if($request->user()->is_admin == true){
-                return $next($request);
+            if($request->user()->is_admin == false){
+                return redirect('/');
+                // return response('Unauthorized.', 401);
             }
-        }
 
-        return redirect('/');
+        return $next($request);
+
     }
 }

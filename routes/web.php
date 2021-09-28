@@ -23,5 +23,7 @@ Auth::routes();
 Route::group(['prefix' => 'member', 'namespace'=>'Member','middleware'=>'auth'], function(){
     Route::resource('event', 'EventController');
 });
-
+Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth','admin']], function(){
+    Route::resource('user', 'UserController');
+});
 // Route::get('/dashboard/index', 'DashboardController@index')->name('dashboard.index');

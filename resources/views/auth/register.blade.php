@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container my-5">
+    @include('partials._messages')
     <div class="row justify-content-center">
         {{-- <div class="col"></div> --}}
         <div class="col-md-6">

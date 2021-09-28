@@ -1,29 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers\Admin;
 
-use App\Event;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\EventStoreRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class EventController extends Controller
+class UserController extends Controller
 {
-
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        // $this->middleware('admin');
+    }
+
+
     public function index()
     {
-        $events = Event::paginate(5);
-        return view('events.index', ['events' => $events]);
+        //
+
+        dd('this is user/index');
     }
 
     /**
@@ -34,7 +32,6 @@ class EventController extends Controller
     public function create()
     {
         //
-        return view('events.create');
     }
 
     /**
@@ -43,16 +40,9 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EventStoreRequest $request)
+    public function store(Request $request)
     {
         //
-        // dd($request->input());
-        $event = Event::create($request->input());
-        $errors = $validator->errors();
-
-        // dd($errors);
-
-        return redirect()->route('event.show', ['event' => $event]);
     }
 
     /**
@@ -63,8 +53,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event::findOrFail($id);
-        return view('events.show', ['events' => $event]);
+        //
     }
 
     /**
@@ -76,8 +65,6 @@ class EventController extends Controller
     public function edit($id)
     {
         //
-        $event = Event::findOrFail($id);
-        return view('events.edit',['event' => $event]);
     }
 
     /**
@@ -87,16 +74,9 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EventStoreRequest $request, Event $event)
+    public function update(Request $request, $id)
     {
-        // $var = $request->input('name') . "/" .$event->id;
-        // dd($var);
         //
-        $event->update($request->input());
-        return redirect()
-         ->route('event.edit', $event)
-         ->with('message', 'Event updated!');
-        // return redirect()->route('event.show', ['event' => $event]);
     }
 
     /**
