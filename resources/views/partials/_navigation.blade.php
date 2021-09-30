@@ -21,7 +21,7 @@
                     </li>
                 @else
                     <li class="nav-item ">
-                        <span class="nav-link">Hello, {{ Auth::user()->name }}
+                        <span class="nav-link">Hello, {{ Auth::user()->name . "/" . Auth::user()->id }}
                         @if (Auth::user()->is_admin == true)
                         [admin]
                         @else
