@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventStoreRequest;
+// use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -13,6 +14,7 @@ class EventController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except' => ['index','show']]);
+        $this->middleware('partisipate',['only' => 'attend']);
     }
 
     /**
@@ -45,7 +47,6 @@ class EventController extends Controller
      */
     public function store(EventStoreRequest $request)
     {
-        //
         // dd($request->input());
         $event = Event::create($request->input());
         $errors = $validator->errors();
@@ -73,10 +74,14 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
-        //
-        $event = Event::findOrFail($id);
+        
+        // if(Gate::denies('update',$event)){
+        //     abort(403);
+        // }
+        $this->authorize('update-event',$event);
+        $event = Event::findOrFail($event->id);
         return view('events.edit',['event' => $event]);
     }
 
@@ -89,13 +94,14 @@ class EventController extends Controller
      */
     public function update(EventStoreRequest $request, Event $event)
     {
-        // $var = $request->input('name') . "/" .$event->id;
-        // dd($var);
-        //
+
+        // if(Gate::denies('update',$event)){
+        //     abort(403);
+        // }
+        $this->authorize('update-event',$event);
         $event->update($request->input());
-        return redirect()
-         ->route('event.edit', $event)
-         ->with('message', 'Event updated!');
+        return redirect()->route('event.edit', $event)->with('message', 'Event updated!');
+            
         // return redirect()->route('event.show', ['event' => $event]);
     }
 
@@ -108,5 +114,9 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function attend($id) {
+        dd('attend event');
     }
 }

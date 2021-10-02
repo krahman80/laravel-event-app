@@ -36,7 +36,9 @@
                         <div class='col-sm-2 col-form-label'>
                         </div>
                         <div class="col-sm-10">
-                        {!! Form::submit('update event', ['class'=>'btn btn-sm btn-primary w-100']) !!}
+                            @can('update-event', $event)
+                            {!! Form::submit('update event', ['class'=>'btn btn-sm btn-primary w-100']) !!}
+                            @endcan
                         </div>
                     </div>
                 {!! Form::close() !!}

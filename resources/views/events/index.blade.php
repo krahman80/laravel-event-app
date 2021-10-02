@@ -26,7 +26,9 @@
                         </p>
                         <p>{!! Html::decode(link_to_route('event.show', '<i class="fa fa-eye"></i> view', ['data' => $event->id], array('class' => 'badge badge-pill badge-light px-3 py-2')) ) !!}
                         @if (Auth::check())
-                            {!! link_to_route('event.partisipate','partisipate',array('data' => $event->id), array('class' => 'badge badge-pill badge-light px-3 py-2')) !!}
+                            @can('attend-event', $event)
+                            {!! link_to_route('event.attend','attend',array('data' => $event->id), array('class' => 'badge badge-pill badge-light px-3 py-2')) !!}
+                            @endcan                            
                         @endif
                         </p>
                         </div>
