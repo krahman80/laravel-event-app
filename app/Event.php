@@ -13,4 +13,10 @@ class Event extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    //this is to pivot table
+    public function attendedUser()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

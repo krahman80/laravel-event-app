@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
-        // Event::class => EventPolicy::class,
+        Event::class => EventPolicy::class,
     ];
 
     /**
@@ -28,17 +28,17 @@ class AuthServiceProvider extends ServiceProvider
         
         // Gate::define('update-event', 'App\Policies\EventPolicy@update');
 
-        Gate::define('update-event', function($user, $event) {
-            return $user->id == $event->user_id;
-        });
+        // Gate::define('update-event', function($user, $event) {
+        //     return $user->id == $event->user_id;
+        // });
         
-        Gate::define('attend-event', function($user, $event) {
-            return $user->id != $event->user_id;
-        });
+        // Gate::define('attend-event', function($user, $event) {
+        //     return $user->id != $event->user_id;
+        // });
 
-        Gate::before(function ($user) {
-            return $user->is_admin == true;
-        });
+        // Gate::before(function ($user) {
+        //     return $user->is_admin == true;
+        // });
 
     }
 }

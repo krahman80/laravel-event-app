@@ -19,7 +19,7 @@
                         Event Desc : {{ $events->description }}
 
                     </p>
-                    <a href="{{ URL::previous() }}">Go Back</a>           
+                    <a href="{{ URL::previous() }}">Back</a>           
                 </div>
             </div>
         </div>

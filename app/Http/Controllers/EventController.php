@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventStoreRequest;
+use Carbon\Carbon;
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+
+use Auth;
 
 class EventController extends Controller
 {
@@ -76,11 +79,8 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        
-        // if(Gate::denies('update',$event)){
-        //     abort(403);
-        // }
-        $this->authorize('update-event',$event);
+        $this->authorize('update', $event);
+
         $event = Event::findOrFail($event->id);
         return view('events.edit',['event' => $event]);
     }
@@ -95,14 +95,11 @@ class EventController extends Controller
     public function update(EventStoreRequest $request, Event $event)
     {
 
-        // if(Gate::denies('update',$event)){
-        //     abort(403);
-        // }
-        $this->authorize('update-event',$event);
+        $this->authorize('update', $event);
+
         $event->update($request->input());
         return redirect()->route('event.edit', $event)->with('message', 'Event updated!');
-            
-        // return redirect()->route('event.show', ['event' => $event]);
+        
     }
 
     /**
@@ -117,6 +114,16 @@ class EventController extends Controller
     }
 
     public function attend($id) {
-        dd('attend event');
+        // dd($id);
+        $event = Event::find($id); 
+        $this->authorize('attend', $event);
+
+        $now = Carbon::now()->format('Y-m-d H:i:s');
+
+        $event->attendedUser()->attach(Auth::user()->id, ['created_at' => $now, 'updated_at' => $now]);
+        
+        //redirect to view here with message
+        dd('die');
+
     }
 }

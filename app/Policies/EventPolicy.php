@@ -24,7 +24,11 @@ class EventPolicy
         return $user->id === $event->user_id;
     }
 
-    public function before($user){
-        return $user->is_admin == true; 
+    public function attend(User $user, Event $event){
+        return $user->id != $event->user_id;
     }
+    
+    // public function before($user){
+    //     return $user->is_admin == true; 
+    // }
 }

@@ -30,4 +30,10 @@ class User extends Authenticatable
     public function events(){
         return $this->hasMany('App\Event');
     }
+
+    //this for pivot table
+    public function attendedEvent() 
+    {
+        return $this->belongsToMany('App\Event');
+    }
 }
