@@ -48,14 +48,14 @@
                 @include('partials._member')
             </div>
            
-        </div>
-        <div class="row">
-            <div class="col col-md-9">
-                <div class="d-flex justify-content-center">
-                {{-- {!! $events->links() !!} --}}
-                </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-9">
+            <div class="d-flex justify-content-center">
+            {{-- {!! $events->links() !!} --}}
             </div>
         </div>
     </div>
 </div>
+
 @endsection

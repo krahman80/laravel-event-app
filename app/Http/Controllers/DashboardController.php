@@ -8,6 +8,10 @@ Use App\Event;
 
 class DashboardController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function myEvent(){
         // $user_id = Auth::user()->id;
         // Event::where('user_id', Auth::user()->id)->get();

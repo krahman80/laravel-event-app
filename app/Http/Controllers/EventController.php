@@ -98,7 +98,7 @@ class EventController extends Controller
         $this->authorize('update', $event);
 
         $event->update($request->input());
-        return redirect()->route('event.edit', $event)->with('message', 'Event updated!');
+        return redirect()->route('event.edit', $event)->with('success', 'Event updated!');
         
     }
 
@@ -113,6 +113,7 @@ class EventController extends Controller
         //
     }
 
+    //attend action
     public function attend($id) {
         // dd($id);
         $event = Event::find($id); 
@@ -123,7 +124,14 @@ class EventController extends Controller
         $event->attendedUser()->attach(Auth::user()->id, ['created_at' => $now, 'updated_at' => $now]);
         
         //redirect to view here with message
-        dd('die');
+        return view('dashboards.attended_event')->with('success', 'attend request success');
 
+    }
+
+    //attend view
+    public function attendedEvent() {
+        //view list of logged in attended event. 
+        
+        return view('dashboards.attended_event',['users' => User::find(Auth::user()->id)]);
     }
 }

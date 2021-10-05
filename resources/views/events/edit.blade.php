@@ -10,11 +10,12 @@
     
     <div class="row">
         <div class="col-md-9 blog-main col-lg-9 blog-main col-sm-9 blogmain">
-            @if (session('message'))
+            {{-- @if (session('message'))
                 <div class="alert alert-success">
                     {{ session('message') }}
                 </div>
-            @endif
+            @endif --}}
+            @include('partials._messages')
             <div class="card p-4">
                 <h5 class="card-title">Edit Event</h5>
                 {!! Form::model($event, ['method'=> 'put', 'route'=>['event.update',$event->id], 'class'=>'form']) !!}

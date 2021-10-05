@@ -34,6 +34,7 @@ class User extends Authenticatable
     //this for pivot table
     public function attendedEvent() 
     {
+        // return $this->belongsToMany('App\Event')->withPivot("is_confirmed")->withTimestamps();
         return $this->belongsToMany('App\Event');
     }
 }
