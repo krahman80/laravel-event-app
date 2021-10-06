@@ -9,6 +9,7 @@
                <hr/ class="mx-2">
                <h2 class="h5 card-title">Member's Area</h2>
                <ul class="nav flex-column">
+                   {{-- link to user profile --}}
                    <li class="nav-item">{!! Html::decode(link_to_route('dashboard.my-event', '<i class="fa fa-bar-chart mr-1"></i> my events', array(), array('class'=>'nav-link h5 p-0 m-0'))) !!}</li> 
                    <li class="nav-item">{!! Html::decode(link_to_route('dashboard.attended-event', '<i class="fa fa-book mr-1"></i> attended events', array(), array('class'=>'nav-link h5 p-0 m-0'))) !!}</li> 
               </ul>

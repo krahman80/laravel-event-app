@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col col-md-7 my-2">    
-            <h4>My Event</h4>
+            <h4 class="h4">My Created Event</h4>
         </div>
         <div class="col col-md-2 col-ofset-3 my-2">
             @if (Auth::check())

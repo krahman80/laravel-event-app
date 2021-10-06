@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 Use App\Event;
+Use App\User;
 
 class DashboardController extends Controller
 {
@@ -31,7 +32,7 @@ class DashboardController extends Controller
     }
 
     public function attendedEvent() {
-        $user_id = Auth::user()->id;
-        dd('attended event '.$user_id);
+        // dd($msg);
+        return view('dashboards.attended_event',['users' => User::find(Auth::user()->id)]);
     }
 }

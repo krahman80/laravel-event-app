@@ -124,14 +124,11 @@ class EventController extends Controller
         $event->attendedUser()->attach(Auth::user()->id, ['created_at' => $now, 'updated_at' => $now]);
         
         //redirect to view here with message
-        return view('dashboards.attended_event')->with('success', 'attend request success');
-
+        // return view('dashboards.attended_event')->with('success', 'attend request success');
+        // return redirect()->action('DashboardController@attendedEvent');
+        // return redirect()->route('dashboard.attended-event')->with('success', 'attending request is sent');
+        return redirect()->route('dashboard.attended-event');
     }
 
-    //attend view
-    public function attendedEvent() {
-        //view list of logged in attended event. 
-        
-        return view('dashboards.attended_event',['users' => User::find(Auth::user()->id)]);
-    }
+    
 }
