@@ -15,41 +15,58 @@
     </div>
     <div class="row">
         <div class="col-md-9 blog-main col-lg-9 blog-main col-sm-9 blogmain">
-                @forelse ($events as $event)
-                    <div class="card mb-2">
+            
+            <div class="py-3">
+                {!! Form::open(['url' => 'search']) !!}
+                <div class="input-group">
+                    {!! Form::text('keyword', null, ['class'=>'form-control mr-2' . ($errors->has('keyword') ? ' is-invalid' : null), 'placeholder'=>'Search Event']); !!} 
+                           <button type="submit" class="btn btn-primary">
+                               Search Event
+                           </button>
+                </div>
+                <small class="text-danger">{{ $errors->first('keyword') }}</small>   
+                {!! Form::close() !!}
+            </div>
+
+            @forelse ($events as $event)
+                <div class="card mb-2">
                     <div class="card-body">
                         <div class="row">
-                        <div class="col-12">
-                        <h5 class="card-title">{{ $event->name }}</h5>
-                        <p class="card-text">
-                            Event Description : {{ $event->description }}
-                        </p>
-                        <p>{!! Html::decode(link_to_route('event.show', '<i class="fa fa-eye"></i> view', ['data' => $event->id], array('class' => 'badge badge-pill badge-light px-3 py-2')) ) !!}
-                        @if (Auth::check())
-                            @can('attend', $event)
-                            {!! link_to_route('event.attend','attend',array('data' => $event->id), array('class' => 'badge badge-pill badge-light px-3 py-2')) !!}
-                            @endcan                            
-                        @endif
-                        </p>
-                        </div>
-                        {{-- <div class="col">
+                            <div class="col-12">
+                            <h5 class="card-title">{{ $event->name }}</h5>
+                            <p class="card-text">
+                                Event Description : {{ $event->description }}
+                            </p>
+                            <p>{!! Html::decode(link_to_route('event.show', '<i class="fa fa-eye"></i> view', ['data' => $event->id], array('class' => 'badge badge-pill badge-light px-3 py-2')) ) !!}
                             @if (Auth::check())
-                            <div class="row my-1">{!! Html::decode(link_to_route('event.edit', '<i class="fa fa-edit"></i> edit', ['data' => $event->id], ['class' => 'badge badge-pill badge-light px-3 py-2'])) !!}</div>
-                            <div class="row my-1">{!! Html::decode(link_to_route('event.destroy', '<i class="fa fa-trash"></i> delete', ['data' => $event->id], array('class' => 'badge badge-pill badge-light px-3 py-2')) ) !!} </div>
+                                @can('attend', $event)
+                                {!! link_to_route('event.attend','attend',array('data' => $event->id), array('class' => 'badge badge-pill badge-light px-3 py-2')) !!}
+                                @endcan                            
                             @endif
-                        </div> --}}
-                    </div>
-                    </div>
-                    </div>
-                        @empty
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">No events found!</h5>
-                                <p class="card-text"></p>
+                            </p>
                             </div>
+                            {{-- <div class="col">
+                                @if (Auth::check())
+                                <div class="row my-1">{!! Html::decode(link_to_route('event.edit', '<i class="fa fa-edit"></i> edit', ['data' => $event->id], ['class' => 'badge badge-pill badge-light px-3 py-2'])) !!}</div>
+                                <div class="row my-1">{!! Html::decode(link_to_route('event.destroy', '<i class="fa fa-trash"></i> delete', ['data' => $event->id], array('class' => 'badge badge-pill badge-light px-3 py-2')) ) !!} </div>
+                                @endif
+                            </div> --}}
+                        </div>
+                    </div>
+                </div>
+                    @empty
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="card-title">No events found!</h5>
+                                    <p class="card-text"></p>
+                                </div>
                             </div>
-                        @endforelse                   
-            
+                        </div>
+                    </div>
+            @endforelse                      
+   
             </div>
             <div class="col">
                 @include('partials._member')

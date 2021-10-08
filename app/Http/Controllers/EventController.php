@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventStoreRequest;
+use App\Http\Requests\EventSearchRequest;
 use Carbon\Carbon;
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
-
+Use App\User;
 use Auth;
 
 class EventController extends Controller
@@ -28,6 +29,22 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::paginate(5);
+        return view('events.index', ['events' => $events]);
+    }
+
+    public function search(EventSearchRequest $request)
+    {
+        // dd($request->input('keyword'));
+        // $errors = $validator->errors();
+        // dd($error);
+        // if ($validator->fails()) {
+        //     // return self::index($request)->withErrors($validator->errors());
+        //     return view('events.index', ['events' => Event::find(0)])->with('error','error');
+        // }
+        $request->validated();
+
+        $events = Event::where( 'name', 'LIKE', '%' .$request->input('keyword') . '%' )->paginate(5);
+        $events->appends(['keyword' => $request->input('keyword')]);
         return view('events.index', ['events' => $events]);
     }
 
@@ -51,8 +68,9 @@ class EventController extends Controller
     public function store(EventStoreRequest $request)
     {
         // dd($request->input());
+        $request->validated();
         $event = Event::create($request->input());
-        $errors = $validator->errors();
+        // $errors = $validator->errors();
 
         // dd($errors);
 
@@ -119,15 +137,16 @@ class EventController extends Controller
         $event = Event::find($id); 
         $this->authorize('attend', $event);
 
-        $now = Carbon::now()->format('Y-m-d H:i:s');
+        if($event->attendedUser()->where('user_id', Auth::user()->id)->exists()){
+            return view('dashboards.attended_event',['users' => User::find(Auth::user()->id)])->with('error', 'Attend request failed! already request to attend.');
+        }
 
+        $now = Carbon::now()->format('Y-m-d H:i:s');
         $event->attendedUser()->attach(Auth::user()->id, ['created_at' => $now, 'updated_at' => $now]);
         
         //redirect to view here with message
         // return view('dashboards.attended_event')->with('success', 'attend request success');
-        // return redirect()->action('DashboardController@attendedEvent');
-        // return redirect()->route('dashboard.attended-event')->with('success', 'attending request is sent');
-        return redirect()->route('dashboard.attended-event');
+        return view('dashboards.attended_event',['users' => User::find(Auth::user()->id)])->with('success', 'Attend request success, wait for confirmation.');
     }
 
     

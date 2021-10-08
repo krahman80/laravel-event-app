@@ -21,10 +21,11 @@
                         <div class="col-12">
                         <h5 class="card-title">{{ $event->name }}</h5>
                         <p class="card-text">
-                            Event Description : {{ $event->description }}
+                            Event Description: {{ $event->description }}
                         </p>
                         <p>{!! Html::decode(link_to_route('event.show', '<i class="fa fa-eye"></i> view', ['data' => $event->id], array('class' => 'badge badge-pill badge-light px-3 py-2')) ) !!}
                            {!! Html::decode(link_to_route('event.edit', '<i class="fa fa-pencil-square-o"></i> edit', ['data' => $event->id], array('class' => 'badge badge-pill badge-light px-3 py-2')) ) !!}
+                           {!! Html::decode(link_to_route('dashboard.show-request', '<i class="fa fa-envelope-o"></i> show request', ['data' => $event->id], array('class' => 'badge badge-pill badge-light px-3 py-2')) ) !!}
                         {{-- @if (Auth::check())
                             {!! link_to_route('event.partisipate','partisipate',array('data' => $event->id), array('class' => 'badge badge-pill badge-light px-3 py-2')) !!}
                         @endif --}}
