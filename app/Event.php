@@ -17,7 +17,7 @@ class Event extends Model
     //this is to pivot table
     public function attendedUser()
     {
-        // return $this->belongsToMany('App\User')->withPivot("is_confirmed")->withTimestamps();
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withPivot('id','is_confirmed')->withTimestamps();
+        // return $this->belongsToMany('App\User');
     }
 }

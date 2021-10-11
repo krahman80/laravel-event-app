@@ -22,8 +22,9 @@ Route::group(['prefix' => 'admin', 'namespace'=>'Admin','middleware'=>['auth','a
 Route::get('/my-event','DashboardController@myEvent')->name('dashboard.my-event');
 Route::any('my-event-search', 'DashboardController@myEventSearch')->name('dashboard.my-event-search');
 Route::get('/show-request/{id}','DashboardController@showRequest')->name('dashboard.show-request');
+Route::any('attended-event-search','DashboardController@attendedEventSearch')->name('dashboard.attended-event-search');
 Route::get('/attended-event','DashboardController@attendedEvent')->name('dashboard.attended-event');
-
+Route::get('/approve/{id}','DashboardController@approveEvent')->name('dashboard.approve');
 // Route::get('/', function () {
 //     return view('public.welcome');
 // });
