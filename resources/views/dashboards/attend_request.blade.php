@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col col-md-7 my-2">    
-                <h4 class="h4">{{ $event }}</h4>
+                <h4 class="h4">{{ $event->name }}</h4>
                 <h5 class="h5">Attend Request</h5>
             </div>
             <div class="col col-md-2 col-ofset-3 my-2">
@@ -13,6 +13,7 @@
         </div>
         <div class="row">
             <div class="col-md-9 blog-main col-lg-9 blog-main col-sm-9 blogmain">
+                @include('partials._messages')
                 <table class="table table-striped">
                     <thead>
                       <tr>
@@ -36,7 +37,7 @@
                         </td>
                         <td>
                             @if ($user->pivot->is_confirmed == '0')
-                            {!! Html::decode(link_to_route('dashboard.approve', '<i class="fa fa-check-square-o"></i> approve', ['data' => $user->pivot->id], array('class' => 'badge badge-pill badge-primary px-3 py-2')) ) !!}
+                            {!! Html::decode(link_to_route('dashboard.approve', '<i class="fa fa-check-square-o"></i> approve', ['event' => $event->id, 'approve' => $user->pivot->id], array('class' => 'badge badge-pill badge-primary px-3 py-2')) ) !!}
                             @else
                                 &nbsp;
                             @endif

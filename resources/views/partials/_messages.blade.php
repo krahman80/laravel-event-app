@@ -1,27 +1,28 @@
-{{-- @if(count($errors) > 0)
-    @foreach($errors->all() as $error)
-        <div class="alert alert-danger">
-            {{$error}}
-        </div>
-    @endforeach
-@endif --}}
-
-{{-- @if(session('success'))
+@if(session('success'))
     <div class="alert alert-success">
         {{session('success')}}
     </div>
-@endif --}}
+@endif
 
-{{-- @if(session('error'))
+@if(session('error'))
     <div class="alert alert-danger">
         {{session('error')}}
     </div>
-@endif --}}
+@endif
 
-@if(!empty($success))
+{{-- @if(!empty($success))
     <div class="alert alert-success"> {{ $success }}</div>
 @endif
 
 @if(!empty($error))
     <div class="alert alert-warning"> {{ $error }}</div>
-@endif
+@endif --}}
+
+{{-- if withErrors is used --}}
+{{-- @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger">
+                {{$error}}
+            </div>
+        @endforeach
+    @endif --}}
