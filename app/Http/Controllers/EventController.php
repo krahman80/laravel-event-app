@@ -133,20 +133,19 @@ class EventController extends Controller
 
     //attend action
     public function attend($id) {
-        // dd($id);
         $event = Event::find($id); 
         $this->authorize('attend', $event);
 
         if($event->attendedUser()->where('user_id', Auth::user()->id)->exists()){
-            return view('dashboards.attended_event',['users' => User::find(Auth::user()->id)])->with('error', 'Attend request failed! already request to attend.');
+            return redirect()->route('dashboard.attended-event')->with('error', 'Attend request failed! already request to attend.');
         }
 
+        //save pivot table
         $now = Carbon::now()->format('Y-m-d H:i:s');
         $event->attendedUser()->attach(Auth::user()->id, ['created_at' => $now, 'updated_at' => $now]);
         
         //redirect to view here with message
-        // return view('dashboards.attended_event')->with('success', 'attend request success');
-        return view('dashboards.attended_event',['users' => User::find(Auth::user()->id)])->with('success', 'Attend request success, wait for confirmation.');
+        return redirect()->route('dashboard.attended-event')->with('success', 'Attend request success, wait for confirmation.');
     }
 
     
