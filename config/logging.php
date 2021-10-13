@@ -76,6 +76,11 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
+
+        'none' => [
+            'driver' => 'monolog',
+            'handler' => \Monolog\Handler\NullHandler::class,
+        ],
     ],
 
 ];
